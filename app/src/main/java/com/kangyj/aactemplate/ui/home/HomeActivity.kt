@@ -48,9 +48,12 @@ class HomeActivity : BaseActivity<HomePageModel, ViewDataBinding>(),
 //
 //        navView.setupWithNavController(navController)
         nav_view.setOnNavigationItemSelectedListener(this)
-        viewpager.offscreenPageLimit = 3
+        viewpager.offscreenPageLimit = 1
         viewpager.adapter = object :
-            FragmentStatePagerAdapter(supportFragmentManager) {
+            FragmentStatePagerAdapter(
+                supportFragmentManager
+
+            ) {
             override fun getCount(): Int {
                 return TabFragment.values().size
             }
@@ -88,7 +91,7 @@ class HomeActivity : BaseActivity<HomePageModel, ViewDataBinding>(),
 
     override fun onDestroy() {
         super.onDestroy()
-//        TabFragment.onDestroy()
+        TabFragment.onDestroy()
     }
 
     /**

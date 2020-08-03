@@ -189,7 +189,7 @@ abstract class BaseListFragment<VM : BaseListViewModel<*>, DB : ViewDataBinding,
     private fun registerDataChange() {
         mViewModel.mResult = MutableLiveData<T>()
         //数据变化的监听
-        mViewModel.mResult!!.observe(this, Observer {
+        mViewModel.mResult!!.observe(viewLifecycleOwner, Observer {
             showListData(it as MutableList<T>, pageNum)
         })
     }
@@ -200,7 +200,7 @@ abstract class BaseListFragment<VM : BaseListViewModel<*>, DB : ViewDataBinding,
 
     override fun showTips(msg: String) {
         val snackBar = TSnackbar.make(
-            activity!!.findViewById(android.R.id.content),
+            requireActivity().findViewById(android.R.id.content),
             msg,
             TSnackbar.LENGTH_SHORT
         )
@@ -344,13 +344,13 @@ abstract class BaseListFragment<VM : BaseListViewModel<*>, DB : ViewDataBinding,
     }
 
     override val hulkActivity: Activity
-        get() = activity!!
+        get() = requireActivity()
 
     override val hulkContext: Context
-        get() = context!!
+        get() = requireContext()
 
     override val hulkAppContext: Context
-        get() = activity!!.applicationContext
+        get() = requireActivity().applicationContext
 
 
     /**

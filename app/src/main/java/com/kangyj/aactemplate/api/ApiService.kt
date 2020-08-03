@@ -32,7 +32,7 @@ interface ApiService {
     suspend fun dailyWordList(
         @Field("count") count: Int,
         @Field("page") page: Int
-    ): BaseRes<List<DashboardData>>
+    ): BaseRes<List<NotificationsData>>
 
     //福利图片
     @GET("api/image/girl/list/random")

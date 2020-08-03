@@ -70,7 +70,6 @@ class NotificationsAdapter : BaseMultiAdapter<NotificationsData>(ArrayList()) {
                 .placeholder(R.mipmap.ic_launcher)
                 .error(R.mipmap.load_error)
                 .into(imageView)
-            Log.i("Mr.kang", "loadImage: $url+走到这里了")
         }
     }
 }

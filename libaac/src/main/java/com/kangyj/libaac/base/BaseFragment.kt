@@ -186,7 +186,7 @@ abstract class BaseFragment<VM : BaseViewModel<*>, DB : ViewDataBinding> : Fragm
 
     override fun showTips(msg: String) {
         val snackBar = TSnackbar.make(
-            activity!!.findViewById(android.R.id.content),
+            requireActivity().findViewById(android.R.id.content),
             msg,
             TSnackbar.LENGTH_SHORT
         )
@@ -281,13 +281,13 @@ abstract class BaseFragment<VM : BaseViewModel<*>, DB : ViewDataBinding> : Fragm
     }
 
     override val hulkActivity: Activity
-        get() = activity!!
+        get() = requireActivity()
 
     override val hulkContext: Context
-        get() = context!!
+        get() = requireContext()
 
     override val hulkAppContext: Context
-        get() = activity!!.applicationContext
+        get() = requireActivity().applicationContext
 
 
     /**

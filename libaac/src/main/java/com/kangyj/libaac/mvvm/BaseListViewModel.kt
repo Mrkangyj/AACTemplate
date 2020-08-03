@@ -113,18 +113,23 @@ abstract class BaseListViewModel<API> : ViewModel(), LifecycleObserver {
             if (!networkUtils.isConnected()) {
                 onNetWorkError { reTry() }//没网
             } else {
-                if (it is NetWorkException) {
-                    onNetWorkError { reTry() }
-                } else if (it is ReturnCodeException) {
-                    isIntercepted(it)
-                    onReturnCodeError(
-                        (it as ReturnCodeException).returnCode,
-                        it.message
-                    ) { reTry() }
-                } else if (it is ResultException) {
-                    onTEmpty { reTry() }
-                } else {
-                    onNetWorkError { reTry() } //UnknownHostException 1：服务器地址错误；2：网络未连接
+                when (it) {
+                    is NetWorkException -> {
+                        onNetWorkError { reTry() }
+                    }
+                    is ReturnCodeException -> {
+                        isIntercepted(it)
+                        onReturnCodeError(
+                            (it as ReturnCodeException).returnCode,
+                            it.message
+                        ) { reTry() }
+                    }
+                    is ResultException -> {
+                        onTEmpty { reTry() }
+                    }
+                    else -> {
+                        onNetWorkError { reTry() } //UnknownHostException 1：服务器地址错误；2：网络未连接
+                    }
                 }
             }
         },
