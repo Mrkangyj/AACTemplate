@@ -20,7 +20,7 @@ import com.alibaba.android.arouter.launcher.ARouter
 import com.androidadvance.topsnackbar.TSnackbar
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.kangyj.libaac.R
-import com.kangyj.libaac.config.HulkConfig
+import com.kangyj.libaac.config.AACConfig
 import com.kangyj.libaac.mvvm.BaseListViewModel
 import com.kangyj.libaac.mvvm.IListView
 import com.kangyj.libaac.utils.ActivityUtils
@@ -92,10 +92,10 @@ abstract class BaseListActivity<VM : BaseListViewModel<*>, DB : ViewDataBinding,
 
     override fun onCreate(savedInstanceState: Bundle?) {
         ActivityUtils.get()!!.addActivity(this)
-        if (HulkConfig.isArouterOpen()) {
+        if (AACConfig.isArouterOpen()) {
             ARouter.getInstance().inject(this)
         }
-        if (HulkConfig.isEventBusOpen()) {
+        if (AACConfig.isEventBusOpen()) {
             EventBusUtils.register(this)
         }
         super.onCreate(savedInstanceState)
@@ -472,7 +472,7 @@ abstract class BaseListActivity<VM : BaseListViewModel<*>, DB : ViewDataBinding,
         super.onDestroy()
         ActivityUtils.get()!!.remove(this)
         //event注销
-        if (HulkConfig.isEventBusOpen()){
+        if (AACConfig.isEventBusOpen()){
             EventBusUtils.unRegister(this)
         }
         //相关销毁，相关事件置空

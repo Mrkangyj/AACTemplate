@@ -5,7 +5,7 @@ import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.kangyj.libaac.config.HulkConfig
+import com.kangyj.libaac.config.AACConfig
 import com.kangyj.libaac.em.RequestDisplay
 import com.kangyj.libaac.http.ResponseThrowable
 import com.kangyj.libaac.http.exception.NetWorkException
@@ -49,7 +49,7 @@ abstract class BaseListViewModel<API> : ViewModel(), LifecycleObserver {
      */
     fun getApiService(): API {
         if (apiService == null) {
-            apiService = HulkConfig.getRetrofit()!!.create(
+            apiService = AACConfig.getRetrofit()!!.create(
                 (javaClass.genericSuperclass as ParameterizedType).actualTypeArguments[0] as Class<API>
             )
         }
@@ -186,9 +186,9 @@ abstract class BaseListViewModel<API> : ViewModel(), LifecycleObserver {
     ) {
         coroutineScope {
             //接口成功返回后判断是否是增删改查成功，不满足的话，返回异常
-            if (HulkConfig.getRetSuccessList() != null) {
+            if (AACConfig.getRetSuccessList() != null) {
                 //成功
-                if (HulkConfig.getRetSuccessList()!!.contains(response.getCode())) {
+                if (AACConfig.getRetSuccessList()!!.contains(response.getCode())) {
                     if (response.getResult() == null || response.getResult().toString().equals("[]")) {
                         //完成的回调所有弹窗消失
                         if (pageNo == 1) {
@@ -219,7 +219,7 @@ abstract class BaseListViewModel<API> : ViewModel(), LifecycleObserver {
                 }
             } else {
                 //成功
-                if (response.getCode().equals(HulkConfig.getRetSuccess())) {
+                if (response.getCode().equals(AACConfig.getRetSuccess())) {
                     if (response.getResult() == null || response.getResult().toString().equals("[]")) {
                         //完成的回调所有弹窗消失
                         if (pageNo == 1) {
@@ -365,7 +365,7 @@ abstract class BaseListViewModel<API> : ViewModel(), LifecycleObserver {
      */
     private fun isIntercepted(t: Throwable): Boolean {
         var isIntercepted = false //是否被拦截了
-        for (interceptor: IReturnCodeErrorInterceptor in HulkConfig.getRetCodeInterceptors()) {
+        for (interceptor: IReturnCodeErrorInterceptor in AACConfig.getRetCodeInterceptors()) {
             if (interceptor.intercept((t as ReturnCodeException).returnCode)) {
                 isIntercepted = true
                 interceptor.doWork((t as ReturnCodeException).returnCode, t.message)

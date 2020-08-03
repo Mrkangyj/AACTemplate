@@ -19,7 +19,7 @@ import androidx.lifecycle.ViewModelProviders
 import com.alibaba.android.arouter.launcher.ARouter
 import com.androidadvance.topsnackbar.TSnackbar
 import com.kangyj.libaac.R
-import com.kangyj.libaac.config.HulkConfig
+import com.kangyj.libaac.config.AACConfig
 import com.kangyj.libaac.mvvm.BaseViewModel
 import com.kangyj.libaac.mvvm.IView
 import com.kangyj.libaac.utils.EventBusUtils
@@ -91,10 +91,10 @@ abstract class BaseFragment<VM : BaseViewModel<*>, DB : ViewDataBinding> : Fragm
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        if (HulkConfig.isArouterOpen()) {
+        if (AACConfig.isArouterOpen()) {
             ARouter.getInstance().inject(this)
         }
-        if (HulkConfig.isEventBusOpen()) {
+        if (AACConfig.isEventBusOpen()) {
             EventBusUtils.register(this)
         }
         createViewModel()
@@ -304,7 +304,7 @@ abstract class BaseFragment<VM : BaseViewModel<*>, DB : ViewDataBinding> : Fragm
     override fun onDestroy() {
         super.onDestroy()
         //event注销
-        if (HulkConfig.isEventBusOpen()){
+        if (AACConfig.isEventBusOpen()){
             EventBusUtils.unRegister(this)
         }
         //相关销毁，相关事件置空

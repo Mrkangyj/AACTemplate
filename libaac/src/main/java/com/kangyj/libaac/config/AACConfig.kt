@@ -13,7 +13,7 @@ import java.util.*
  * module：
  * description：
  */
-object HulkConfig {
+object AACConfig {
     private var retrofit: Retrofit? = null
     //服务地址
     private var baseUrl: String? = null
@@ -62,7 +62,7 @@ object HulkConfig {
     }
 
     fun setRetrofit(retrofit: Retrofit?) {
-        HulkConfig.retrofit = retrofit
+        AACConfig.retrofit = retrofit
     }
 
     fun getBaseUrl(): String? {
@@ -70,7 +70,7 @@ object HulkConfig {
     }
 
     fun setBaseUrl(baseUrl: String?) {
-        HulkConfig.baseUrl = baseUrl
+        AACConfig.baseUrl = baseUrl
     }
 
     fun getRetSuccess(): String? {
@@ -78,7 +78,7 @@ object HulkConfig {
     }
 
     fun setRetSuccess(retSuccess: String?) {
-        HulkConfig.retSuccess = retSuccess
+        AACConfig.retSuccess = retSuccess
     }
 
     fun getRetSuccessList(): List<String>? {
@@ -86,7 +86,7 @@ object HulkConfig {
     }
 
     fun setRetSuccessList(retSuccessList: List<String>?) {
-        HulkConfig.retSuccessList = retSuccessList
+        AACConfig.retSuccessList = retSuccessList
     }
 
     fun isLogOpen(): Boolean {
@@ -94,7 +94,7 @@ object HulkConfig {
     }
 
     fun setLogOpen(logOpen: Boolean) {
-        HulkConfig.logOpen = logOpen
+        AACConfig.logOpen = logOpen
     }
 
     fun isEventBusOpen(): Boolean {
@@ -102,7 +102,7 @@ object HulkConfig {
     }
 
     fun setEventBusOpen(eventBusOpen: Boolean) {
-        HulkConfig.eventBusOpen = eventBusOpen
+        AACConfig.eventBusOpen = eventBusOpen
     }
 
     fun isArouterOpen(): Boolean {
@@ -110,7 +110,7 @@ object HulkConfig {
     }
 
     fun setArouterOpen(arouterOpen: Boolean) {
-        HulkConfig.arouterOpen = arouterOpen
+        AACConfig.arouterOpen = arouterOpen
     }
 
     fun getConnectTimeout(): Long {
@@ -118,7 +118,7 @@ object HulkConfig {
     }
 
     fun setConnectTimeout(connectTimeout: Long) {
-        HulkConfig.connectTimeout = connectTimeout
+        AACConfig.connectTimeout = connectTimeout
     }
 
     fun getReadTimeout(): Long {
@@ -126,7 +126,7 @@ object HulkConfig {
     }
 
     fun setReadTimeout(readTimeout: Long) {
-        HulkConfig.readTimeout = readTimeout
+        AACConfig.readTimeout = readTimeout
     }
 
     fun getWriteTimeout(): Long {
@@ -134,7 +134,7 @@ object HulkConfig {
     }
 
     fun setWriteTimeout(writeTimeout: Long) {
-        HulkConfig.writeTimeout = writeTimeout
+        AACConfig.writeTimeout = writeTimeout
     }
 
     fun getOkHttpInterceptors(): List<Interceptor>? {
@@ -142,7 +142,7 @@ object HulkConfig {
     }
 
     fun setOkHttpInterceptors(okHttpInterceptors: MutableList<Interceptor>?) {
-        HulkConfig.okHttpInterceptors = okHttpInterceptors
+        AACConfig.okHttpInterceptors = okHttpInterceptors
     }
 
     fun getRetCodeInterceptors(): List<IReturnCodeErrorInterceptor> {
@@ -150,7 +150,7 @@ object HulkConfig {
     }
 
     fun setRetCodeInterceptors(retCodeInterceptors: MutableList<IReturnCodeErrorInterceptor>?) {
-        HulkConfig.retCodeInterceptors = retCodeInterceptors
+        AACConfig.retCodeInterceptors = retCodeInterceptors
     }
 
     fun getVersionDifInterceptors(): List<IVersionDifInterceptor>? {
@@ -158,7 +158,7 @@ object HulkConfig {
     }
 
     fun setVersionDifInterceptors(versionDifInterceptors: MutableList<IVersionDifInterceptor>?) {
-        HulkConfig.versionDifInterceptors = versionDifInterceptors
+        AACConfig.versionDifInterceptors = versionDifInterceptors
     }
 
     fun isCacheOpen(): Boolean {
@@ -166,7 +166,7 @@ object HulkConfig {
     }
 
     fun setCacheOpen(cacheOpen: Boolean) {
-        HulkConfig.cacheOpen = cacheOpen
+        AACConfig.cacheOpen = cacheOpen
     }
 
     fun getConfigBuilder(): ConfigBuilder? {
@@ -174,63 +174,63 @@ object HulkConfig {
     }
 
     fun setConfigBuilder(configBuilder: ConfigBuilder?) {
-        HulkConfig.configBuilder = configBuilder
+        AACConfig.configBuilder = configBuilder
     }
 
     class ConfigBuilder {
         fun setRetrofit(retrofit: Retrofit?): ConfigBuilder {
-            HulkConfig.retrofit = retrofit
+            AACConfig.retrofit = retrofit
             return this
         }
 
         fun setBaseUrl(baseUrl: String?): ConfigBuilder {
-            HulkConfig.baseUrl = baseUrl
+            AACConfig.baseUrl = baseUrl
             return this
         }
 
         fun setRetSuccess(retSuccess: String?): ConfigBuilder {
-            HulkConfig.retSuccess = retSuccess
+            AACConfig.retSuccess = retSuccess
             return this
         }
 
         fun setRetSuccessList(retSuccessList: List<String>?): ConfigBuilder {
-            HulkConfig.retSuccessList = retSuccessList
+            AACConfig.retSuccessList = retSuccessList
             return this
         }
 
         fun setRetSuccessList(retSuccessList: String): ConfigBuilder {
-            HulkConfig.retSuccessList =
+            AACConfig.retSuccessList =
                 Arrays.asList(*retSuccessList.split(",").toTypedArray())
             return this
         }
 
         fun setLogOpen(logOpen: Boolean): ConfigBuilder {
-            HulkConfig.logOpen = logOpen
+            AACConfig.logOpen = logOpen
             return this
         }
 
         fun setEventBusOpen(eventBusOpen: Boolean): ConfigBuilder {
-            HulkConfig.eventBusOpen = eventBusOpen
+            AACConfig.eventBusOpen = eventBusOpen
             return this
         }
 
         fun setArouterOpen(arouterOpen: Boolean): ConfigBuilder {
-            HulkConfig.arouterOpen = arouterOpen
+            AACConfig.arouterOpen = arouterOpen
             return this
         }
 
         fun setConnectTimeout(connectTimeout: Long): ConfigBuilder {
-            HulkConfig.connectTimeout = connectTimeout
+            AACConfig.connectTimeout = connectTimeout
             return this
         }
 
         fun setReadTimeout(readTimeout: Long): ConfigBuilder {
-            HulkConfig.readTimeout = readTimeout
+            AACConfig.readTimeout = readTimeout
             return this
         }
 
         fun setWriteTimeout(writeTimeout: Long): ConfigBuilder {
-            HulkConfig.writeTimeout = writeTimeout
+            AACConfig.writeTimeout = writeTimeout
             return this
         }
 
@@ -270,12 +270,12 @@ object HulkConfig {
         }
 
         fun setCacheOpen(cacheOpen: Boolean): ConfigBuilder {
-            HulkConfig.cacheOpen = cacheOpen
+            AACConfig.cacheOpen = cacheOpen
             return this
         }
 
         fun setConfigBuilder(configBuilder: ConfigBuilder?): ConfigBuilder {
-            HulkConfig.configBuilder = configBuilder
+            AACConfig.configBuilder = configBuilder
             return this
         }
 

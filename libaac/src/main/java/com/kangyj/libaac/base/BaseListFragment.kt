@@ -22,7 +22,7 @@ import com.alibaba.android.arouter.launcher.ARouter
 import com.androidadvance.topsnackbar.TSnackbar
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.kangyj.libaac.R
-import com.kangyj.libaac.config.HulkConfig
+import com.kangyj.libaac.config.AACConfig
 import com.kangyj.libaac.mvvm.BaseListViewModel
 import com.kangyj.libaac.mvvm.IListView
 import com.kangyj.libaac.utils.EventBusUtils
@@ -107,10 +107,10 @@ abstract class BaseListFragment<VM : BaseListViewModel<*>, DB : ViewDataBinding,
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        if (HulkConfig.isArouterOpen()) {
+        if (AACConfig.isArouterOpen()) {
             ARouter.getInstance().inject(this)
         }
-        if (HulkConfig.isEventBusOpen()) {
+        if (AACConfig.isEventBusOpen()) {
             EventBusUtils.register(this)
         }
         createViewModel()
@@ -461,7 +461,7 @@ abstract class BaseListFragment<VM : BaseListViewModel<*>, DB : ViewDataBinding,
     override fun onDestroy() {
         super.onDestroy()
         //event注销
-        if (HulkConfig.isEventBusOpen()) {
+        if (AACConfig.isEventBusOpen()) {
             EventBusUtils.unRegister(this)
         }
         //相关销毁，相关事件置空

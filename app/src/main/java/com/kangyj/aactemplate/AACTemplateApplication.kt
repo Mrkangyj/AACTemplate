@@ -2,9 +2,8 @@ package com.kangyj.aactemplate
 
 import android.content.Context
 import com.alibaba.android.arouter.launcher.ARouter
-import com.kangyj.aactemplate.BuildConfig
 import com.kangyj.libaac.base.AACApplication
-import com.kangyj.libaac.config.HulkConfig
+import com.kangyj.libaac.config.AACConfig
 import com.kangyj.libaac.http.ApiClient
 import com.kangyj.libaac.utils.Utils
 import com.madreain.aachulk.interceptor.RequestHeaderInterceptor
@@ -27,7 +26,7 @@ class AACTemplateApplication : AACApplication() {
 
 
     override fun initAACConfig() {
-        HulkConfig.builder() //这里只需要选择设置一个
+        AACConfig.builder() //这里只需要选择设置一个
             .setRetSuccess(BuildConfig.CODE_SUCCESS)
             .setBaseUrl(BuildConfig.BASE_URL)
             .setLogOpen(BuildConfig.OPEN_LOG)
@@ -42,7 +41,7 @@ class AACTemplateApplication : AACApplication() {
             .setRetrofit(
                 ApiClient.instance!!.getRetrofit(
                     ApiClient.instance!!.getOkHttpClient(
-                        HulkConfig.getOkHttpInterceptors()
+                        AACConfig.getOkHttpInterceptors()
                     )
                 )
             )

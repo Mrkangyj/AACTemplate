@@ -9,7 +9,7 @@ import com.google.gson.stream.JsonReader
 import com.google.gson.stream.JsonToken
 import com.google.gson.stream.JsonWriter
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
-import com.kangyj.libaac.config.HulkConfig
+import com.kangyj.libaac.config.AACConfig
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
@@ -36,11 +36,11 @@ class ApiClient {
             }
         }
         return builder.connectTimeout(
-            HulkConfig.getConnectTimeout(),
+            AACConfig.getConnectTimeout(),
             TimeUnit.SECONDS
         ) //设置请求超时时间
-            .readTimeout(HulkConfig.getReadTimeout(), TimeUnit.SECONDS)
-            .writeTimeout(HulkConfig.getWriteTimeout(), TimeUnit.SECONDS)
+            .readTimeout(AACConfig.getReadTimeout(), TimeUnit.SECONDS)
+            .writeTimeout(AACConfig.getWriteTimeout(), TimeUnit.SECONDS)
             .retryOnConnectionFailure(true) //设置出现错误进行重新连接。
             .build()
     }
@@ -51,7 +51,7 @@ class ApiClient {
      */
     fun getRetrofit(okHttpClient: OkHttpClient?): Retrofit {
         return Retrofit.Builder()
-            .baseUrl(HulkConfig.getBaseUrl())
+            .baseUrl(AACConfig.getBaseUrl())
             .addConverterFactory(
                 GsonConverterFactory.create(
                     GsonBuilder().registerTypeAdapterFactory(
